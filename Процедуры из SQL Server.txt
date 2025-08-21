@@ -1,0 +1,33 @@
+Процедуры уже сохранены и выполнены в SQL Сервере
+-------------------------------------------------
+1) Отображение всех клиентов 
+ALTER procedure [dbo].[stp_CustomerAll]
+as
+begin
+select * from Customers
+end
+-------------------------------------------------
+2) Удаление клиента (такую делали на уроке) 
+ALTER procedure [dbo].[stp_CustomerDelete]
+@customerID int
+as
+begin
+delete from [dbo].[Customers] where id=@customerID
+
+end
+-------------------------------------------------
+3) Обновление информации о клиенте
+ALTER PROCEDURE [dbo].[stp_CustomerUpdate]
+    @id INT,
+    @FirstName NVARCHAR(100),
+    @LastName NVARCHAR(100),
+    @DateOfBirth DATE
+AS
+BEGIN
+    UPDATE dbo.Customers
+    SET 
+        FirstName = @FirstName,
+        LastName = @LastName,
+        DateOfBirth = @DateOfBirth
+    WHERE id = @id
+END
